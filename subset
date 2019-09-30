@@ -1,0 +1,21 @@
+import copy
+class Solution:
+    def generate(self,i,nums,result,item,):
+        if i >= len(nums):
+            return
+        item.append(nums[i])
+        item_new = copy.copy(item)
+        result.append(item_new)
+        self.generate(i+1,nums,result,item)
+        item.pop(-1)
+        self.generate(i+1,nums,result,item)
+    def subset(self,nums):
+        result = []
+        item = []
+        self.generate(0,nums,result,item)
+        return result
+if __name__ == "__main__":
+    S = Solution()
+    list = [1,2,3]
+    result = S.subset(list)
+    print(result)
